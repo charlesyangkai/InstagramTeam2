@@ -7,29 +7,83 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class LoginViewController: UIViewController {
+    
+    @IBOutlet weak var backgroundImageView: UINavigationItem!
+    
+    @IBOutlet weak var usernameTextField: UITextField!
+    
+    @IBOutlet weak var passwordTextField: UITextField!
 
+    @IBAction func createAccountButton(_ sender: UIButton) {
+        guard let controller = storyboard?.instantiateViewController(withIdentifier: "RegisterViewController") as? RegisterViewController else {return}
+        
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    @IBOutlet weak var loginButton: UIButton!{
+        didSet {
+            loginButton.addTarget(self, action: #selector(login), for: .touchUpInside)
+        }
+    }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
 
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
+    
+  
+    func login() {
+        FIRAuth.auth()?.signIn(withEmail: usernameTextField.text!, password: passwordTextField.text!, completion: { (user,error) in
+            
+            //check if error
+            if error != nil {
+                print(error! as NSError)
+                return
+            }
+        })
+}
 
-    /*
-    // MARK: - Navigation
+//            //get the user
+//            self.handleUser(user: user!)
+//            
+//            })
+//    }
+    
+//    func handleUser(user: FIRUser) {
+//        
+//        guard let controller = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ChannelViewController") as? ChannelViewController else {return}
+//        
+//        navigationController?.pushViewController(controller, animated: true)
+//        
+//        
+//        print("User found :\(user.uid)")
+//    }
+//    
+//    func checkUserUID() -> String {
+//        guard let uid = FIRAuth.auth()?.currentUser?.uid
+//            else{
+//                return ""
+//                
+//        }
+//        return uid
+//        
+//        
+//        
+//    }
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
+
 
 }

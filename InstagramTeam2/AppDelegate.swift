@@ -17,7 +17,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         FIRApp.configure()
-        // Override point for customization after application launch.
+        
+        //displayLogin()
+        
+        window?.rootViewController = LoginViewController()
+        
         return true
     }
 
@@ -45,4 +49,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
+
+//extension AppDelegate {
+//    func displayLogin() {
+//        let storyboard = UIStoryboard(name: "Auth", bundle: Bundle.main)
+//        let controller = storyboard.instantiateViewController(withIdentifier: "navigation") as? UINavigationController
+//        window?.rootViewController = controller
+//    }
+//    
+//    func accessLogin() {
+//        
+//    }
+//}
 
