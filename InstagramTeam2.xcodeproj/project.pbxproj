@@ -14,6 +14,7 @@
 		8AA119A51E4DB850008C0049 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AA119A41E4DB850008C0049 /* Assets.xcassets */; };
 		8AA119A81E4DB850008C0049 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AA119A61E4DB850008C0049 /* LaunchScreen.storyboard */; };
 		8AA119B01E4DB9C4008C0049 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8AA119AF1E4DB9C4008C0049 /* GoogleService-Info.plist */; };
+		8AD583981E5194790071D1E3 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD583971E5194790071D1E3 /* CustomTabBarController.swift */; };
 		DD09982B1E515EF300F665DD /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD09982A1E515EF300F665DD /* TimelineViewController.swift */; };
 		DD09982D1E515F0300F665DD /* TimelineStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD09982C1E515F0300F665DD /* TimelineStoryboard.storyboard */; };
 		DD09982F1E515F3E00F665DD /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD09982E1E515F3E00F665DD /* Auth.storyboard */; };
@@ -33,6 +34,7 @@
 		8AA119A71E4DB850008C0049 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8AA119A91E4DB850008C0049 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8AA119AF1E4DB9C4008C0049 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8AD583971E5194790071D1E3 /* CustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		DD09982A1E515EF300F665DD /* TimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
 		DD09982C1E515F0300F665DD /* TimelineStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TimelineStoryboard.storyboard; sourceTree = "<group>"; };
 		DD09982E1E515F3E00F665DD /* Auth.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				DD09982A1E515EF300F665DD /* TimelineViewController.swift */,
+				8AD583971E5194790071D1E3 /* CustomTabBarController.swift */,
 				DD09982C1E515F0300F665DD /* TimelineStoryboard.storyboard */,
 			);
 			name = TimeLines;
@@ -250,6 +253,7 @@
 			files = (
 				DD0998311E515F5400F665DD /* LoginViewController.swift in Sources */,
 				DD0998331E515F6200F665DD /* RegisterViewController.swift in Sources */,
+				8AD583981E5194790071D1E3 /* CustomTabBarController.swift in Sources */,
 				8AA119A01E4DB84F008C0049 /* ViewController.swift in Sources */,
 				8AA1199E1E4DB84F008C0049 /* AppDelegate.swift in Sources */,
 				DD09982B1E515EF300F665DD /* TimelineViewController.swift in Sources */,
