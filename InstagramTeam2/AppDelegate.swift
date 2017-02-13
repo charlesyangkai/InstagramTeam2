@@ -16,11 +16,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
         FIRApp.configure()
         
-        //displayLogin()
+        displayLogin()
         
-        window?.rootViewController = LoginViewController()
+        //window?.rootViewController = LoginViewController()
         
         return true
     }
@@ -50,15 +51,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
-//extension AppDelegate {
-//    func displayLogin() {
-//        let storyboard = UIStoryboard(name: "Auth", bundle: Bundle.main)
-//        let controller = storyboard.instantiateViewController(withIdentifier: "navigation") as? UINavigationController
-//        window?.rootViewController = controller
-//    }
-//    
-//    func accessLogin() {
-//        
-//    }
-//}
+extension AppDelegate {
+    func displayLogin() {
+        
+        let storyboard = UIStoryboard(name: "Auth", bundle: Bundle.main)
+        let controller = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController
+        window?.rootViewController = controller!
+        let controllerDirection = storyboard.instantiateViewController(withIdentifier: "navigation") as? UINavigationController
+        window?.rootViewController = controllerDirection
+    }
+    
+    func accessLogin() {
+        
+    }
+}
 

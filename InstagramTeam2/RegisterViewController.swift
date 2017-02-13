@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class RegisterViewController: UIViewController {
 
@@ -25,7 +26,12 @@ class RegisterViewController: UIViewController {
     
     @IBOutlet weak var passwordFirstTime: UITextField!
     
-    @IBOutlet weak var proceedButtonInReg: UIButton!
+    @IBOutlet weak var registerButton: UIButton!{
+        didSet {
+            registerButton.addTarget(self, action: #selector(handleRegister), for: .touchUpInside)
+        }
+    }
+    
     
     
     
@@ -33,6 +39,29 @@ class RegisterViewController: UIViewController {
         super.viewDidLoad()
 
         
+    }
+    
+    func handleRegister () {
+        
+        let username = usernameFirstTime.text
+        let email = emailFirstTime.text
+        let password = passwordFirstTime.text
+        let image = userSelectImage.image
+        
+        FIRAuth.auth()?.createUser(withEmail: emailFirstTime.text!, password: passwordFirstTime.text!, completion: { (user,error) in
+            if error != nil{
+                print(error! as NSError)
+                return
+            }
+            
+            self.handleUser(user: user!)
+            
+            })
+        
+    }
+    
+    func handleUser(user: FIRUser) {
+        print("User found :\(user.uid)")
     }
 
 }

@@ -18,9 +18,9 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
 
     @IBAction func createAccountButton(_ sender: UIButton) {
-        guard let controller = storyboard?.instantiateViewController(withIdentifier: "RegisterViewController") as? RegisterViewController else {return}
+        guard let controllerDirection = storyboard?.instantiateViewController(withIdentifier: "RegisterViewController") as? RegisterViewController else {return}
         
-        navigationController?.pushViewController(controller, animated: true)
+        navigationController?.pushViewController(controllerDirection, animated: true)
     }
     
     @IBOutlet weak var loginButton: UIButton!{
