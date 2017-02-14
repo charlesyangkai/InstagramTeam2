@@ -8,8 +8,11 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
 
 class RegisterViewController: UIViewController {
+    
+    var databaseRef : FIRDatabaseReference!
 
     @IBOutlet weak var userSelectImage: UIImageView! {
         didSet {
@@ -56,6 +59,7 @@ class RegisterViewController: UIViewController {
             
             self.handleUser(user: user!)
             
+        
             })
         
     }
@@ -63,6 +67,9 @@ class RegisterViewController: UIViewController {
     func handleUser(user: FIRUser) {
         print("User found :\(user.uid)")
     }
+    
+    
+    
 
 }
 
@@ -83,19 +90,23 @@ extension RegisterViewController : UIImagePickerControllerDelegate, UINavigation
         
     }
     
-//    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-//        
-//        var selectedImage: UIImage?
-    
-     
-    
-    
-    
-    
-    
-    
-    
-    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        var selectedImageFromPicker: UIImage?
+        
+        if let editedImage = info["UIImagePickerControllerOriginalImage"] as? UIImage {
+            selectedImageFromPicker = editedImage
+        
+        }else if let originalImage = info["UIImagePickerControllerOriginalImage"] as? UIImage {
+            selectedImageFromPicker = originalImage
+        
+        }
+        if let selectedImage = selectedImageFromPicker {
+            userSelectImage.image = selectedImage
+        }
+        
+        dismiss(animated: true, completion: nil)
+    }
 }
 
 

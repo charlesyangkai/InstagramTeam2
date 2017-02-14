@@ -50,7 +50,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LUR-l8-K0n">
                                 <rect key="frame" x="30" y="338" width="315" height="30"/>
@@ -123,7 +123,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile-icon" translatesAutoresizingMaskIntoConstraints="NO" id="QOM-5d-lVS">
-                                <rect key="frame" x="90" y="100" width="195" height="160"/>
+                                <rect key="frame" x="100" y="100" width="175" height="160"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="160" id="lxu-Jv-oq0"/>
                                 </constraints>
@@ -153,11 +153,14 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Api-tI-8U6">
-                                <rect key="frame" x="164" y="425" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Api-tI-8U6">
+                                <rect key="frame" x="162.5" y="431" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="AN7-Hn-Kli"/>
+                                    <constraint firstAttribute="width" constant="50" id="CVg-1P-9Ca"/>
+                                </constraints>
                                 <state key="normal" title="&gt;"/>
                             </button>
                         </subviews>
@@ -165,16 +168,18 @@
                         <constraints>
                             <constraint firstItem="2bO-9T-l69" firstAttribute="leading" secondItem="7l1-Xm-asZ" secondAttribute="leading" constant="30" id="0fD-Fq-3z5"/>
                             <constraint firstItem="QOM-5d-lVS" firstAttribute="top" secondItem="3Vq-kz-5iC" secondAttribute="bottom" constant="80" id="6tE-8A-P0Z"/>
-                            <constraint firstAttribute="trailing" secondItem="QOM-5d-lVS" secondAttribute="trailing" constant="90" id="7YJ-np-CfF"/>
+                            <constraint firstAttribute="trailing" secondItem="QOM-5d-lVS" secondAttribute="trailing" constant="100" id="7YJ-np-CfF"/>
                             <constraint firstItem="2bO-9T-l69" firstAttribute="top" secondItem="M93-hj-7qw" secondAttribute="bottom" constant="8" id="8HH-9P-tqp"/>
                             <constraint firstItem="ey8-Ub-yxW" firstAttribute="top" secondItem="2bO-9T-l69" secondAttribute="bottom" constant="8" id="BOI-Az-6Mi"/>
+                            <constraint firstItem="Api-tI-8U6" firstAttribute="top" secondItem="ey8-Ub-yxW" secondAttribute="bottom" constant="45" id="CD5-Ji-Rct"/>
                             <constraint firstItem="M93-hj-7qw" firstAttribute="top" secondItem="QOM-5d-lVS" secondAttribute="bottom" constant="20" id="TLm-yu-0ce"/>
-                            <constraint firstItem="QOM-5d-lVS" firstAttribute="leading" secondItem="7l1-Xm-asZ" secondAttribute="leading" constant="90" id="Vpb-Pi-YCU"/>
+                            <constraint firstItem="QOM-5d-lVS" firstAttribute="leading" secondItem="7l1-Xm-asZ" secondAttribute="leading" constant="100" id="Vpb-Pi-YCU"/>
                             <constraint firstItem="M93-hj-7qw" firstAttribute="leading" secondItem="7l1-Xm-asZ" secondAttribute="leading" constant="30" id="Yst-hb-hbC"/>
                             <constraint firstItem="ey8-Ub-yxW" firstAttribute="leading" secondItem="7l1-Xm-asZ" secondAttribute="leading" constant="30" id="h6y-sp-yXx"/>
                             <constraint firstAttribute="trailing" secondItem="M93-hj-7qw" secondAttribute="trailing" constant="30" id="kHa-dN-c05"/>
                             <constraint firstItem="ey8-Ub-yxW" firstAttribute="top" secondItem="2bO-9T-l69" secondAttribute="bottom" constant="8" id="lM7-iG-nje"/>
                             <constraint firstAttribute="trailing" secondItem="2bO-9T-l69" secondAttribute="trailing" constant="30" id="v3z-Mg-E8q"/>
+                            <constraint firstItem="Api-tI-8U6" firstAttribute="centerX" secondItem="7l1-Xm-asZ" secondAttribute="centerX" id="vay-AF-g2L"/>
                             <constraint firstAttribute="trailing" secondItem="ey8-Ub-yxW" secondAttribute="trailing" constant="30" id="x5y-TB-1zR"/>
                         </constraints>
                     </view>
