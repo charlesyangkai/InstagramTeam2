@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7CEEDF457D5DC2FF3CE8D37F /* Pods_InstagramTeam2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DA3B66EE37EED7744EB1D9F /* Pods_InstagramTeam2.framework */; };
+		8A260F6E1E52FA0D0075E1BC /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A260F6D1E52FA0C0075E1BC /* Post.swift */; };
 		8AA1199E1E4DB84F008C0049 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA1199D1E4DB84F008C0049 /* AppDelegate.swift */; };
 		8AA119A01E4DB84F008C0049 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA1199F1E4DB84F008C0049 /* ViewController.swift */; };
 		8AA119A31E4DB850008C0049 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AA119A11E4DB850008C0049 /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 		8AA119A81E4DB850008C0049 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AA119A61E4DB850008C0049 /* LaunchScreen.storyboard */; };
 		8AA119B01E4DB9C4008C0049 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8AA119AF1E4DB9C4008C0049 /* GoogleService-Info.plist */; };
 		8AD583981E5194790071D1E3 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD583971E5194790071D1E3 /* CustomTabBarController.swift */; };
+		8AD5839A1E51AF810071D1E3 /* CameraGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD583991E51AF810071D1E3 /* CameraGalleryViewController.swift */; };
 		DD09982B1E515EF300F665DD /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD09982A1E515EF300F665DD /* TimelineViewController.swift */; };
 		DD09982D1E515F0300F665DD /* TimelineStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD09982C1E515F0300F665DD /* TimelineStoryboard.storyboard */; };
 		DD09982F1E515F3E00F665DD /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD09982E1E515F3E00F665DD /* Auth.storyboard */; };
@@ -26,6 +28,7 @@
 		1803143120E8213EDC33AA04 /* Pods-InstagramTeam2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstagramTeam2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-InstagramTeam2/Pods-InstagramTeam2.debug.xcconfig"; sourceTree = "<group>"; };
 		3DA3B66EE37EED7744EB1D9F /* Pods_InstagramTeam2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InstagramTeam2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		45BBAC4DEA1C5D290B464D42 /* Pods-InstagramTeam2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstagramTeam2.release.xcconfig"; path = "Pods/Target Support Files/Pods-InstagramTeam2/Pods-InstagramTeam2.release.xcconfig"; sourceTree = "<group>"; };
+		8A260F6D1E52FA0C0075E1BC /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		8AA1199A1E4DB84F008C0049 /* InstagramTeam2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstagramTeam2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AA1199D1E4DB84F008C0049 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8AA1199F1E4DB84F008C0049 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -35,6 +38,7 @@
 		8AA119A91E4DB850008C0049 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8AA119AF1E4DB9C4008C0049 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8AD583971E5194790071D1E3 /* CustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
+		8AD583991E51AF810071D1E3 /* CameraGalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraGalleryViewController.swift; sourceTree = "<group>"; };
 		DD09982A1E515EF300F665DD /* TimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
 		DD09982C1E515F0300F665DD /* TimelineStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TimelineStoryboard.storyboard; sourceTree = "<group>"; };
 		DD09982E1E515F3E00F665DD /* Auth.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
@@ -118,8 +122,10 @@
 		DD0998291E515EC000F665DD /* TimeLines */ = {
 			isa = PBXGroup;
 			children = (
+				8A260F6D1E52FA0C0075E1BC /* Post.swift */,
 				DD09982A1E515EF300F665DD /* TimelineViewController.swift */,
 				8AD583971E5194790071D1E3 /* CustomTabBarController.swift */,
+				8AD583991E51AF810071D1E3 /* CameraGalleryViewController.swift */,
 				DD09982C1E515F0300F665DD /* TimelineStoryboard.storyboard */,
 			);
 			name = TimeLines;
@@ -254,7 +260,9 @@
 				DD0998311E515F5400F665DD /* LoginViewController.swift in Sources */,
 				DD0998331E515F6200F665DD /* RegisterViewController.swift in Sources */,
 				8AD583981E5194790071D1E3 /* CustomTabBarController.swift in Sources */,
+				8A260F6E1E52FA0D0075E1BC /* Post.swift in Sources */,
 				8AA119A01E4DB84F008C0049 /* ViewController.swift in Sources */,
+				8AD5839A1E51AF810071D1E3 /* CameraGalleryViewController.swift in Sources */,
 				8AA1199E1E4DB84F008C0049 /* AppDelegate.swift in Sources */,
 				DD09982B1E515EF300F665DD /* TimelineViewController.swift in Sources */,
 			);

@@ -15,12 +15,15 @@ class CustomTabBarController: UITabBarController{
         
         //setup our custom view controllers
         
-        viewControllers = [createHomeViewController(imageName: "home"), createSearchViewController(imageName: "search"), createCameraViewController(imageName: "camera"), createNotificationViewController(imageName: "notification"), createProfileViewController(imageName: "profile")]
+        
+        setViewControllers([createHomeViewController(imageName: "home"), createSearchViewController(imageName: "search"), createCameraGalleryViewController(imageName: "camera"), createNotificationViewController(imageName: "notification"), createProfileViewController(imageName: "profile")], animated: true)
     }
     
     
     func createHomeViewController(imageName: String) -> UINavigationController{
         let homeViewController = UIViewController()
+        //get storyboard
+        //instantiate VC
         let navController = UINavigationController(rootViewController: homeViewController)
         navController.tabBarItem.image = UIImage(named: imageName)
         return navController
@@ -33,10 +36,13 @@ class CustomTabBarController: UITabBarController{
         return navController
     }
     
-    func createCameraViewController(imageName: String) -> UINavigationController{
-        let cameraViewController = UIViewController()
-        let navController = UINavigationController(rootViewController: cameraViewController)
-        navController.tabBarItem.image = UIImage(named: imageName)
+    func createCameraGalleryViewController(imageName: String) -> UINavigationController{
+        //let cameraViewController = UIViewController()
+        let storyboard = UIStoryboard(name: "TimelineStoryboard", bundle: Bundle.main)
+        let cameraGalleryViewController = storyboard.instantiateViewController(withIdentifier: "CameraGalleryViewController")
+        let navController = UINavigationController(rootViewController: cameraGalleryViewController)
+        let tabbarItem = UITabBarItem(title: nil, image: UIImage(named:imageName), selectedImage:nil)
+        navController.tabBarItem = tabbarItem
         return navController
     }
     
