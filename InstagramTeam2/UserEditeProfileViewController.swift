@@ -31,17 +31,20 @@ class UserEditeProfileViewController: UIViewController {
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var websiteTextField: UITextField!
     @IBOutlet weak var bioTextField: UITextField!
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var handphoneTextField: UITextField!
+    @IBOutlet weak var doneSettingButton: UIBarButtonItem!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
     
     
 /////////////////////////////////////////////////////////
+    
+    
+    
+
     
     
     func updateUserInfo() {

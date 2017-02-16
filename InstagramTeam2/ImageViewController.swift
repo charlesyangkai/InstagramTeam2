@@ -74,7 +74,6 @@ class ImageViewController: UIViewController, UICollectionViewDelegate, UICollect
     
     func toEditProfilePage() {
         guard let controllerDirection = storyboard?.instantiateViewController(withIdentifier: "UserEditeProfileViewController") as? UserEditeProfileViewController else {return}
-        
         navigationController?.pushViewController(controllerDirection, animated: true)
         
     }
