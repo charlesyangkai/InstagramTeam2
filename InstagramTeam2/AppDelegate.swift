@@ -19,9 +19,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FIRApp.configure()
         
-        displayLogin()
+        //displayLoginNavigation()
         
-        //window?.rootViewController = LoginViewController()
+        let storyboard = UIStoryboard(name: "Collection", bundle: Bundle.main)
+        let controller = storyboard.instantiateViewController(withIdentifier: "ProfileNavi") as? UINavigationController
+        
+        window?.rootViewController = controller
         
         return true
     }
@@ -52,11 +55,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 extension AppDelegate {
-    func displayLogin() {
+    func displayLoginNavigation() {
         
         let storyboard = UIStoryboard(name: "Auth", bundle: Bundle.main)
-        let controller = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController
-        window?.rootViewController = controller!
         let controllerDirection = storyboard.instantiateViewController(withIdentifier: "navigation") as? UINavigationController
         window?.rootViewController = controllerDirection
     }

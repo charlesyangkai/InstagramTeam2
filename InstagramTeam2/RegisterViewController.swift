@@ -94,7 +94,7 @@ extension RegisterViewController : UIImagePickerControllerDelegate, UINavigation
         
         var selectedImageFromPicker: UIImage?
         
-        if let editedImage = info["UIImagePickerControllerOriginalImage"] as? UIImage {
+        if let editedImage = info["UIImagePickerControllerEditedImage"] as? UIImage {
             selectedImageFromPicker = editedImage
         
         }else if let originalImage = info["UIImagePickerControllerOriginalImage"] as? UIImage {

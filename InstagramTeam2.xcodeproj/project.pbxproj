@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		7CEEDF457D5DC2FF3CE8D37F /* Pods_InstagramTeam2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DA3B66EE37EED7744EB1D9F /* Pods_InstagramTeam2.framework */; };
 		8AA1199E1E4DB84F008C0049 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA1199D1E4DB84F008C0049 /* AppDelegate.swift */; };
-		8AA119A01E4DB84F008C0049 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA1199F1E4DB84F008C0049 /* ViewController.swift */; };
 		8AA119A31E4DB850008C0049 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AA119A11E4DB850008C0049 /* Main.storyboard */; };
 		8AA119A51E4DB850008C0049 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AA119A41E4DB850008C0049 /* Assets.xcassets */; };
 		8AA119A81E4DB850008C0049 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AA119A61E4DB850008C0049 /* LaunchScreen.storyboard */; };
@@ -19,6 +18,11 @@
 		DD09982F1E515F3E00F665DD /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD09982E1E515F3E00F665DD /* Auth.storyboard */; };
 		DD0998311E515F5400F665DD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0998301E515F5400F665DD /* LoginViewController.swift */; };
 		DD0998331E515F6200F665DD /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0998321E515F6200F665DD /* RegisterViewController.swift */; };
+		DD0998411E52C75800F665DD /* Collection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD0998401E52C75800F665DD /* Collection.storyboard */; };
+		DD09984F1E52EE7400F665DD /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD09984E1E52EE7400F665DD /* ImageViewController.swift */; };
+		DD0998511E52EF3500F665DD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0998501E52EF3500F665DD /* ViewController.swift */; };
+		DD0998531E5385E000F665DD /* TaggedImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0998521E5385E000F665DD /* TaggedImageViewController.swift */; };
+		DD0998571E5412E500F665DD /* UserEditeProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0998561E5412E500F665DD /* UserEditeProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +31,6 @@
 		45BBAC4DEA1C5D290B464D42 /* Pods-InstagramTeam2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstagramTeam2.release.xcconfig"; path = "Pods/Target Support Files/Pods-InstagramTeam2/Pods-InstagramTeam2.release.xcconfig"; sourceTree = "<group>"; };
 		8AA1199A1E4DB84F008C0049 /* InstagramTeam2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstagramTeam2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AA1199D1E4DB84F008C0049 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8AA1199F1E4DB84F008C0049 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8AA119A21E4DB850008C0049 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8AA119A41E4DB850008C0049 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8AA119A71E4DB850008C0049 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -38,6 +41,11 @@
 		DD09982E1E515F3E00F665DD /* Auth.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
 		DD0998301E515F5400F665DD /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		DD0998321E515F6200F665DD /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		DD0998401E52C75800F665DD /* Collection.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Collection.storyboard; sourceTree = "<group>"; };
+		DD09984E1E52EE7400F665DD /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		DD0998501E52EF3500F665DD /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DD0998521E5385E000F665DD /* TaggedImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggedImageViewController.swift; sourceTree = "<group>"; };
+		DD0998561E5412E500F665DD /* UserEditeProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserEditeProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,12 +99,13 @@
 			isa = PBXGroup;
 			children = (
 				8AA1199D1E4DB84F008C0049 /* AppDelegate.swift */,
-				8AA1199F1E4DB84F008C0049 /* ViewController.swift */,
 				8AA119A11E4DB850008C0049 /* Main.storyboard */,
+				DD0998501E52EF3500F665DD /* ViewController.swift */,
 				8AA119A41E4DB850008C0049 /* Assets.xcassets */,
 				8AA119A61E4DB850008C0049 /* LaunchScreen.storyboard */,
 				8AA119A91E4DB850008C0049 /* Info.plist */,
 				8AA119AF1E4DB9C4008C0049 /* GoogleService-Info.plist */,
+				DD0998391E52C50C00F665DD /* Profile */,
 				DD0998291E515EC000F665DD /* TimeLines */,
 				DD0998281E515EA200F665DD /* Logins */,
 			);
@@ -120,6 +129,17 @@
 				DD09982C1E515F0300F665DD /* TimelineStoryboard.storyboard */,
 			);
 			name = TimeLines;
+			sourceTree = "<group>";
+		};
+		DD0998391E52C50C00F665DD /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				DD0998401E52C75800F665DD /* Collection.storyboard */,
+				DD09984E1E52EE7400F665DD /* ImageViewController.swift */,
+				DD0998521E5385E000F665DD /* TaggedImageViewController.swift */,
+				DD0998561E5412E500F665DD /* UserEditeProfileViewController.swift */,
+			);
+			name = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -189,6 +209,7 @@
 				8AA119B01E4DB9C4008C0049 /* GoogleService-Info.plist in Resources */,
 				DD09982D1E515F0300F665DD /* TimelineStoryboard.storyboard in Resources */,
 				8AA119A51E4DB850008C0049 /* Assets.xcassets in Resources */,
+				DD0998411E52C75800F665DD /* Collection.storyboard in Resources */,
 				8AA119A31E4DB850008C0049 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -248,9 +269,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD0998511E52EF3500F665DD /* ViewController.swift in Sources */,
+				DD0998571E5412E500F665DD /* UserEditeProfileViewController.swift in Sources */,
+				DD09984F1E52EE7400F665DD /* ImageViewController.swift in Sources */,
+				DD0998531E5385E000F665DD /* TaggedImageViewController.swift in Sources */,
 				DD0998311E515F5400F665DD /* LoginViewController.swift in Sources */,
 				DD0998331E515F6200F665DD /* RegisterViewController.swift in Sources */,
-				8AA119A01E4DB84F008C0049 /* ViewController.swift in Sources */,
 				8AA1199E1E4DB84F008C0049 /* AppDelegate.swift in Sources */,
 				DD09982B1E515EF300F665DD /* TimelineViewController.swift in Sources */,
 			);
