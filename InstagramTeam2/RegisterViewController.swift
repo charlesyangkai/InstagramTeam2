@@ -8,12 +8,15 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseStorage
 import FirebaseDatabase
 
 class RegisterViewController: UIViewController {
     
-    var databaseRef : FIRDatabaseReference!
-
+    var dbRef : FIRDatabaseReference!
+    
+    var profilePictureUrl: URL?
+    
     @IBOutlet weak var userSelectImage: UIImageView! {
         didSet {
             userSelectImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectProfileImageView)))
@@ -40,16 +43,46 @@ class RegisterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
+        dbRef = FIRDatabase.database().reference()
     }
     
-    func handleRegister () {
+    
+    func uploadProfilePicture(image: UIImage){
+        let storageRef = FIRStorage.storage().reference()
+        let metadata = FIRStorageMetadata()
         
-        let username = usernameFirstTime.text
-        let email = emailFirstTime.text
-        let password = passwordFirstTime.text
-        let image = userSelectImage.image
+        // Giving stored data a type of data
+        metadata.contentType = "image/jpeg"
+        
+        // Giving a name to profilePicture selected
+        let timestamp = String(Date.timeIntervalSinceReferenceDate)
+        let convertedTimeStamp = timestamp.replacingOccurrences(of: ".", with: "")
+        let profilePictureName = ("image \(convertedTimeStamp).jpeg")
+        
+        
+        // Making sure there is a profilePicture before proceeding, if nil then return
+        guard let profilePictureData = UIImageJPEGRepresentation(image, 0.8) else {return}
+        
+        // Uploading image to firebase storage
+        storageRef.child(profilePictureName).put(profilePictureData, metadata: metadata) { (meta, error) in
+            
+            // Returning to chat by dismissing current view controller
+            self.dismiss(animated: true, completion: nil)
+            
+            if error != nil {
+                print("No image detected")
+                return
+            }
+            
+            if let downloadUrl = meta?.downloadURL(){
+                // Step 1 of setting image url string
+                self.profilePictureUrl = downloadUrl
+            }
+        }
+    }
+    
+    
+    func handleRegister(){
         
         FIRAuth.auth()?.createUser(withEmail: emailFirstTime.text!, password: passwordFirstTime.text!, completion: { (user,error) in
             if error != nil{
@@ -57,20 +90,25 @@ class RegisterViewController: UIViewController {
                 return
             }
             
-            self.handleUser(user: user!)
             
-        
-            })
-        
+            // Step 1. Defining the value, what kind of child users shoudl have
+            var userDictionary : [String: Any] = ["username" : self.usernameFirstTime.text ?? "", "email": self.emailFirstTime.text ?? "", "password": self.passwordFirstTime.text ?? ""]
+            
+            // Convert profile picture url to string
+            if let urlString = self.profilePictureUrl?.absoluteString{
+                // Dictionary with key image stores urlString as value
+                userDictionary["profilePicture"] = urlString ?? "no URL"
+                
+            }
+            
+            // Step 2. Definining the key/id
+            guard let validUserID = user?.uid else {return}
+            //
+            
+            // Step 3. Adding the child values [key: value]
+            self.dbRef.child("username").updateChildValues([validUserID: userDictionary])
+        })
     }
-    
-    func handleUser(user: FIRUser) {
-        print("User found :\(user.uid)")
-    }
-    
-    
-    
-
 }
 
 extension RegisterViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -83,8 +121,8 @@ extension RegisterViewController : UIImagePickerControllerDelegate, UINavigation
         
         self.present(picker, animated: true, completion: nil)
     }
-
-
+    
+    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
         
@@ -96,14 +134,16 @@ extension RegisterViewController : UIImagePickerControllerDelegate, UINavigation
         
         if let editedImage = info["UIImagePickerControllerOriginalImage"] as? UIImage {
             selectedImageFromPicker = editedImage
-        
+            
         }else if let originalImage = info["UIImagePickerControllerOriginalImage"] as? UIImage {
             selectedImageFromPicker = originalImage
-        
+            
         }
         if let selectedImage = selectedImageFromPicker {
             userSelectImage.image = selectedImage
         }
+        
+        uploadProfilePicture(image: selectedImageFromPicker!)
         
         dismiss(animated: true, completion: nil)
     }

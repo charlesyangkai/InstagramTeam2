@@ -21,9 +21,8 @@ class CustomTabBarController: UITabBarController{
     
     
     func createHomeViewController(imageName: String) -> UINavigationController{
-        let homeViewController = UIViewController()
-        //get storyboard
-        //instantiate VC
+        let storyboard = UIStoryboard(name: "TimelineStoryboard", bundle: Bundle.main)
+        let homeViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController")
         let navController = UINavigationController(rootViewController: homeViewController)
         navController.tabBarItem.image = UIImage(named: imageName)
         return navController

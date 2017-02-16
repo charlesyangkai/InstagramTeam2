@@ -16,7 +16,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var usernameTextField: UITextField!
     
     @IBOutlet weak var passwordTextField: UITextField!
-
+    
     @IBAction func createAccountButton(_ sender: UIButton) {
         guard let controllerDirection = storyboard?.instantiateViewController(withIdentifier: "RegisterViewController") as? RegisterViewController else {return}
         
@@ -35,15 +35,15 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         
-
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
     
-  
+    
     func login() {
         FIRAuth.auth()?.signIn(withEmail: usernameTextField.text!, password: passwordTextField.text!, completion: { (user,error) in
             
@@ -52,38 +52,49 @@ class LoginViewController: UIViewController {
                 print(error! as NSError)
                 return
             }
+            
+            self.loadChannelPage()
         })
-}
-
-//            //get the user
-//            self.handleUser(user: user!)
-//            
-//            })
-//    }
+    }
     
-//    func handleUser(user: FIRUser) {
-//        
-//        guard let controller = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ChannelViewController") as? ChannelViewController else {return}
-//        
-//        navigationController?.pushViewController(controller, animated: true)
-//        
-//        
-//        print("User found :\(user.uid)")
-//    }
-//    
-//    func checkUserUID() -> String {
-//        guard let uid = FIRAuth.auth()?.currentUser?.uid
-//            else{
-//                return ""
-//                
-//        }
-//        return uid
-//        
-//        
-//        
-//    }
-
     
-
-
+    
+    func loadChannelPage(){
+        let instaPage = CustomTabBarController()
+        present(instaPage, animated: true, completion: nil)
+    }
+    
+    
+    
+    //            //get the user
+    //            self.handleUser(user: user!)
+    //
+    //            })
+    //    }
+    
+    //    func handleUser(user: FIRUser) {
+    //
+    //        guard let controller = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ChannelViewController") as? ChannelViewController else {return}
+    //
+    //        navigationController?.pushViewController(controller, animated: true)
+    //
+    //
+    //        print("User found :\(user.uid)")
+    //    }
+    //
+    //    func checkUserUID() -> String {
+    //        guard let uid = FIRAuth.auth()?.currentUser?.uid
+    //            else{
+    //                return ""
+    //
+    //        }
+    //        return uid
+    //
+    //
+    //
+    //    }
+    
+    
+    
+    
 }

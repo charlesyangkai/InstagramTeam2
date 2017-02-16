@@ -20,8 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FIRApp.configure()
         
         displayLogin()
-        
-        //window?.rootViewController = LoginViewController()
+        //window?.rootViewController = CustomTabBarController()
         
         return true
     }

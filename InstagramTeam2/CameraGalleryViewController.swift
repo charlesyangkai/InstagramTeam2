@@ -7,10 +7,23 @@
 //
 
 import UIKit
+import FirebaseDatabase
+import FirebaseAuth
+import FirebaseStorage
 
 class CameraGalleryViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    //static var image: UIImage?
+    //static var timestamp: TimeInterval?
+    
     //let picker = UIImagePickerController()
+    
+    var dbRef: FIRDatabaseReference!
+    
+    var imageUrl: URL?
+    var userID: String?
+    var displayThisName: String?
+    var displayThisProfilePicture: String?
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
 
@@ -18,16 +31,95 @@ class CameraGalleryViewController: UIViewController, UIImagePickerControllerDele
     
     @IBOutlet weak var textView: UITextView!
     
-    @IBOutlet weak var postButton: UIButton!
+    @IBOutlet weak var postButton: UIButton!{
+        didSet{
+            postButton.addTarget(self, action: #selector(postImage), for: .touchUpInside)
+        }
+    }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        dbRef = FIRDatabase.database().reference()
+        userID = FIRAuth.auth()?.currentUser?.uid
+        dbRef.child("username").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+            let value = snapshot.value as? NSDictionary
+            let displayName = value?["username"] as? String ?? ""
+            let displayProfilePicture = value?["profilePicture"] as? String ?? ""
+            self.displayThisName = displayName
+            self.displayThisProfilePicture = displayProfilePicture
+        })
         setupView()
         updateView()
     }
+    
+    
+    func uploadImage(image: UIImage){
+        let storageRef = FIRStorage.storage().reference()
+        let metadata = FIRStorageMetadata()
+        
+        // Giving stored data a type of data
+        metadata.contentType = "image/jpeg"
+        
+        // Giving a name to image selected
+        let timestampImage = String(Date.timeIntervalSinceReferenceDate)
+        //print(timestamp)
+        let convertedTimeStampImage = timestampImage.replacingOccurrences(of: ".", with: "")
+        //print(convertedTimeStamp)
+        let imageName = ("image \(convertedTimeStampImage).jpeg")
+        
+        
+        // Making sure there is an image before proceeding, if nil then return
+        guard let imageData = UIImageJPEGRepresentation(image, 0.8) else {return}
+        
+        // Uploading image to firebase
+        storageRef.child(imageName).put(imageData, metadata: metadata) { (meta, error) in
 
+            
+            if error != nil {
+                return
+            }
+            
+            if let downloadUrl = meta?.downloadURL(){
+                // Step 1 of setting image url string
+                self.imageUrl = downloadUrl
+                self.postImage()
+            }
+        }
+    }
+    
+    
+    func postImage(){
+        
+        guard let image = imageView.image else {return}
+        
+        let caption = textView.text
+        
+        let postNumber = HomeViewController.currentPosts.count
+        
+        // Getting the current time
+        let timestamp = Date.timeIntervalSinceReferenceDate
+        
+        // Creating a dictionary that stores the value for current post
+        var postDictionary : [String: Any] = ["username" : displayThisName, "caption" : caption, "profilePicture": displayThisProfilePicture, "timeStamp" : timestamp]
+        
+        
+        // Step 2 of setting image url string
+        // Converting url to string
+        if let urlString = imageUrl?.absoluteString{
+            // Dictionary with key image stores urlString as value
+            postDictionary["image"] = urlString
+        }
+        
+        
+        // Uploading current post class as dictionary to firebase
+        dbRef.child("posts").childByAutoId().setValue(postDictionary)
+        // dbRef.child("posts").child(String(chatIndex)).setValue(postDictionary)
+    }
+
+    
+    
+    
 
     func setupView(){
         setupSegmentedControl()
@@ -63,7 +155,7 @@ class CameraGalleryViewController: UIViewController, UIImagePickerControllerDele
 //        return viewController
 //    }()
 //    private lazy var galleryViewController: GalleryViewController = {
-//        
+//
 //        // Load Storyboard
 //        let storyboard = UIStoryboard(name: "TimelineStoryboard", bundle: Bundle.main)
 //        // Instantiate View Controller
@@ -83,7 +175,7 @@ class CameraGalleryViewController: UIViewController, UIImagePickerControllerDele
             picker.allowsEditing = false
             picker.sourceType = UIImagePickerControllerSourceType.camera
             picker.cameraCaptureMode = .photo
-            picker.modalPresentationStyle = .overFullScreen
+            picker.modalPresentationStyle = .none
             //present(picker,animated: true,completion: nil)
             return picker
         }else{
@@ -163,6 +255,9 @@ class CameraGalleryViewController: UIViewController, UIImagePickerControllerDele
     }
     
     
+ 
+    
+    
 
     
     
@@ -172,6 +267,7 @@ class CameraGalleryViewController: UIViewController, UIImagePickerControllerDele
         if let chosenImage = info[UIImagePickerControllerOriginalImage] as? UIImage{
             imageView.contentMode = .scaleAspectFit
             imageView.image = chosenImage
+            uploadImage(image: chosenImage)
             remove(asChildViewController: galleryImagePickerController)
             if cameraImagePickerController != nil {
                 remove(asChildViewController: cameraImagePickerController!)

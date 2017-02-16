@@ -9,6 +9,39 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Home View Controller-->
+        <scene sceneID="DTi-Em-2Bu">
+            <objects>
+                <viewController storyboardIdentifier="HomeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lcl-66-yus" customClass="HomeViewController" customModule="InstagramTeam2" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9cP-aF-QsL"/>
+                        <viewControllerLayoutGuide type="bottom" id="hVO-3O-IFt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ZVp-T9-z6d">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cVq-pl-9a5">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="cVq-pl-9a5" secondAttribute="trailing" id="8wb-Uh-D2u"/>
+                            <constraint firstItem="cVq-pl-9a5" firstAttribute="leading" secondItem="ZVp-T9-z6d" secondAttribute="leading" id="GwL-X5-fSu"/>
+                            <constraint firstItem="cVq-pl-9a5" firstAttribute="top" secondItem="9cP-aF-QsL" secondAttribute="bottom" id="ick-l2-nyZ"/>
+                            <constraint firstItem="hVO-3O-IFt" firstAttribute="top" secondItem="cVq-pl-9a5" secondAttribute="bottom" id="vgZ-OD-87X"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="postTableView" destination="cVq-pl-9a5" id="e78-QH-cui"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7qX-5M-06U" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-601" y="-31"/>
+        </scene>
         <!--Camera Gallery View Controller-->
         <scene sceneID="Xlq-pH-eX6">
             <objects>
@@ -74,24 +107,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hwh-84-5mb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="104.8" y="-31.03448275862069"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="vXm-eS-tZy">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RaQ-nN-7wr" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3cF-6G-CYz">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="t5j-Je-6BP" kind="relationship" relationship="rootViewController" id="TJ3-Fd-0Mb"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qEp-ml-tQQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-562.39999999999998" y="-31.03448275862069"/>
         </scene>
     </scenes>
 </document>
