@@ -31,10 +31,13 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var emailFirstTime: UITextField!
     
     @IBOutlet weak var passwordFirstTime: UITextField!
+    @IBOutlet weak var userBioTextField: UITextField!
     
     @IBOutlet weak var registerButton: UIButton!{
         didSet {
             registerButton.addTarget(self, action: #selector(handleRegister), for: .touchUpInside)
+            
+            self.dismiss(animated: true, completion: nil)
         }
     }
     
@@ -92,7 +95,7 @@ class RegisterViewController: UIViewController {
             
             
             // Step 1. Defining the value, what kind of child users shoudl have
-            var userDictionary : [String: Any] = ["username" : self.usernameFirstTime.text ?? "", "email": self.emailFirstTime.text ?? "", "password": self.passwordFirstTime.text ?? ""]
+            var userDictionary : [String: Any] = ["username" : self.usernameFirstTime.text ?? "", "email": self.emailFirstTime.text ?? "", "password": self.passwordFirstTime.text ?? "", "bio" : self.userBioTextField.text ?? ""]
             
             // Convert profile picture url to string
             if let urlString = self.profilePictureUrl?.absoluteString{
@@ -132,7 +135,7 @@ extension RegisterViewController : UIImagePickerControllerDelegate, UINavigation
         
         var selectedImageFromPicker: UIImage?
         
-        if let editedImage = info["UIImagePickerControllerOriginalImage"] as? UIImage {
+        if let editedImage = info["UIImagePickerControllerEditedImage"] as? UIImage {
             selectedImageFromPicker = editedImage
             
         }else if let originalImage = info["UIImagePickerControllerOriginalImage"] as? UIImage {

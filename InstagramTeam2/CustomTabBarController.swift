@@ -53,10 +53,14 @@ class CustomTabBarController: UITabBarController{
     }
     
     func createProfileViewController(imageName: String) -> UINavigationController{
-        let profileViewController = UIViewController()
+        let storyboard = UIStoryboard(name: "Collection", bundle: Bundle.main)
+        let profileViewController = storyboard.instantiateViewController(withIdentifier: "ImageViewController")
         let navController = UINavigationController(rootViewController: profileViewController)
-        navController.tabBarItem.image = UIImage(named: imageName)
+        let tabbarItem = UITabBarItem(title: nil, image: UIImage(named:imageName), selectedImage:nil)
+        navController.tabBarItem = tabbarItem
         return navController
+        
+        
     }
     
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AlT-ef-pdg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="3Ed-JH-Msv">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -32,7 +32,7 @@
                                     <constraint firstAttribute="height" constant="40" id="TVF-ov-8Ha"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6CX-z4-JOA">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="test3@gmail.com" borderStyle="roundedRect" placeholder="Username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6CX-z4-JOA">
                                 <rect key="frame" x="30" y="260" width="315" height="30"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
@@ -42,7 +42,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ywA-UE-cxe">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="qqqqqq" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ywA-UE-cxe">
                                 <rect key="frame" x="30" y="298" width="315" height="30"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
@@ -156,30 +156,42 @@
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Api-tI-8U6">
-                                <rect key="frame" x="162.5" y="431" width="50" height="50"/>
+                                <rect key="frame" x="162" y="509" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="AN7-Hn-Kli"/>
                                     <constraint firstAttribute="width" constant="50" id="CVg-1P-9Ca"/>
                                 </constraints>
                                 <state key="normal" title="&gt;"/>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bDl-RN-FxQ">
+                                <rect key="frame" x="30" y="394" width="315" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="4r8-Eq-OZW"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="2bO-9T-l69" firstAttribute="leading" secondItem="7l1-Xm-asZ" secondAttribute="leading" constant="30" id="0fD-Fq-3z5"/>
+                            <constraint firstItem="bDl-RN-FxQ" firstAttribute="leading" secondItem="7l1-Xm-asZ" secondAttribute="leading" constant="30" id="2FJ-5o-WV9"/>
+                            <constraint firstAttribute="trailing" secondItem="bDl-RN-FxQ" secondAttribute="trailing" constant="30" id="31r-3B-65R"/>
                             <constraint firstItem="QOM-5d-lVS" firstAttribute="top" secondItem="3Vq-kz-5iC" secondAttribute="bottom" constant="80" id="6tE-8A-P0Z"/>
                             <constraint firstAttribute="trailing" secondItem="QOM-5d-lVS" secondAttribute="trailing" constant="100" id="7YJ-np-CfF"/>
                             <constraint firstItem="2bO-9T-l69" firstAttribute="top" secondItem="M93-hj-7qw" secondAttribute="bottom" constant="8" id="8HH-9P-tqp"/>
                             <constraint firstItem="ey8-Ub-yxW" firstAttribute="top" secondItem="2bO-9T-l69" secondAttribute="bottom" constant="8" id="BOI-Az-6Mi"/>
-                            <constraint firstItem="Api-tI-8U6" firstAttribute="top" secondItem="ey8-Ub-yxW" secondAttribute="bottom" constant="45" id="CD5-Ji-Rct"/>
                             <constraint firstItem="M93-hj-7qw" firstAttribute="top" secondItem="QOM-5d-lVS" secondAttribute="bottom" constant="20" id="TLm-yu-0ce"/>
                             <constraint firstItem="QOM-5d-lVS" firstAttribute="leading" secondItem="7l1-Xm-asZ" secondAttribute="leading" constant="100" id="Vpb-Pi-YCU"/>
                             <constraint firstItem="M93-hj-7qw" firstAttribute="leading" secondItem="7l1-Xm-asZ" secondAttribute="leading" constant="30" id="Yst-hb-hbC"/>
+                            <constraint firstItem="bDl-RN-FxQ" firstAttribute="top" secondItem="ey8-Ub-yxW" secondAttribute="bottom" constant="8" id="ZFQ-cb-DR3"/>
                             <constraint firstItem="ey8-Ub-yxW" firstAttribute="leading" secondItem="7l1-Xm-asZ" secondAttribute="leading" constant="30" id="h6y-sp-yXx"/>
                             <constraint firstAttribute="trailing" secondItem="M93-hj-7qw" secondAttribute="trailing" constant="30" id="kHa-dN-c05"/>
                             <constraint firstItem="ey8-Ub-yxW" firstAttribute="top" secondItem="2bO-9T-l69" secondAttribute="bottom" constant="8" id="lM7-iG-nje"/>
                             <constraint firstAttribute="trailing" secondItem="2bO-9T-l69" secondAttribute="trailing" constant="30" id="v3z-Mg-E8q"/>
                             <constraint firstItem="Api-tI-8U6" firstAttribute="centerX" secondItem="7l1-Xm-asZ" secondAttribute="centerX" id="vay-AF-g2L"/>
+                            <constraint firstItem="Api-tI-8U6" firstAttribute="top" secondItem="bDl-RN-FxQ" secondAttribute="bottom" constant="15" id="wob-Dv-dY9"/>
                             <constraint firstAttribute="trailing" secondItem="ey8-Ub-yxW" secondAttribute="trailing" constant="30" id="x5y-TB-1zR"/>
                         </constraints>
                     </view>
@@ -187,6 +199,7 @@
                         <outlet property="emailFirstTime" destination="2bO-9T-l69" id="Okp-LG-22w"/>
                         <outlet property="passwordFirstTime" destination="ey8-Ub-yxW" id="naO-0X-qbf"/>
                         <outlet property="registerButton" destination="Api-tI-8U6" id="DFb-Xy-crJ"/>
+                        <outlet property="userBioTextField" destination="bDl-RN-FxQ" id="L9S-Px-6iF"/>
                         <outlet property="userSelectImage" destination="QOM-5d-lVS" id="5y1-Yq-GcB"/>
                         <outlet property="usernameFirstTime" destination="M93-hj-7qw" id="JMZ-Ss-LWk"/>
                     </connections>
