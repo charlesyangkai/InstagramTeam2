@@ -1,9 +1,9 @@
 //
 //  TimelineViewController.swift
-//  InstagramTeam2
+//  
 //
-//  Created by Rock on 13/02/2017.
-//  Copyright © 2017 NextAcademy. All rights reserved.
+//  Created by Charles Lee on 15/2/17.
+//
 //
 
 import UIKit

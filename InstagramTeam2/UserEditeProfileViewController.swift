@@ -9,8 +9,16 @@
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
+import FirebaseStorage
+import Firebase
 
 class UserEditeProfileViewController: UIViewController {
+    
+    
+    let ref = FIRDatabase.database().reference()
+    let uid = FIRAuth.auth()?.currentUser?.uid
+    
+    var displayNameInPost : String?
     
     
     @IBOutlet weak var selectedDisplayImage: UIImageView!{
@@ -31,69 +39,68 @@ class UserEditeProfileViewController: UIViewController {
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var websiteTextField: UITextField!
     @IBOutlet weak var bioTextField: UITextField!
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var handphoneTextField: UITextField!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        displayUserName()
+        navigationItem.rightBarButtonItem = userEndEditButton
     }
+
     
     
-/////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////
     
     
+    //create a "done" button programatically 
+    
+    let userEndEditButton = UIBarButtonItem.init(title: "Done", style: .done, target: self, action: #selector(updateUserInfo))
+
     func updateUserInfo() {
         guard let name = nameTextField.text,
             let username = usernameTextField.text,
             let website = websiteTextField.text,
             let bioInfo = bioTextField.text else
-        { return
-        }
+        { return }
+        
         let ref = FIRDatabase.database().reference()
         
         let value = ["name": name, "username": username, "website": website, "bio": bioInfo]
         
         let uid = FIRAuth.auth()?.currentUser?.uid
         
-        ref.child("user").child(uid!).updateChildValues(value, withCompletionBlock: { (err, ref) in
+        ref.child("username").child(uid!).updateChildValues(value, withCompletionBlock: { (err, ref) in
             if err != nil {
                 print("err")
                 return
             }
+            print("successfully update user information")
+            //self.dismiss(animated: true, completion: nil)
             
         })
-        
-//        ref.child("users").
-
-        
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 
+    
+    func displayUserName() {
+        let ref = FIRDatabase.database().reference()
+        
+        let uid = FIRAuth.auth()?.currentUser?.uid
+        
+        ref.child("username").child(uid!).observe(.value, with: {
+            (snapshot) in
+            
+            print(snapshot)
+            
+            let value = snapshot.value as? NSDictionary
+            let displayName = value?["name"] as? String ?? ""
+            
+            self.nameTextField.text = displayName
 
+        })
+    }
 }
+
 
 extension UserEditeProfileViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -126,6 +133,25 @@ extension UserEditeProfileViewController : UIImagePickerControllerDelegate, UINa
         }
         
         dismiss(animated: true, completion: nil)
+    }
+    
+    //upload image to firebase
+    
+    func uploadImage(image: UIImage) {
+        guard let imageData = UIImageJPEGRepresentation(image, 0.8) else {return}
+        
+        let ref = FIRStorage.storage().reference()
+        
+        let uid = FIRAuth.auth()?.currentUser?.uid
+        
+        let metadata = FIRStorageMetadata()
+        metadata.contentType = "image/jpeg"
+        
+        ref.child("username").child(uid!)
+        
+        
+        
+        
     }
 
     

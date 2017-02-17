@@ -19,12 +19,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FIRApp.configure()
         
-        //displayLoginNavigation()
+        displayLoginNavigation()
         
-        let storyboard = UIStoryboard(name: "Collection", bundle: Bundle.main)
-        let controller = storyboard.instantiateViewController(withIdentifier: "ProfileNavi") as? UINavigationController
-        
-        window?.rootViewController = controller
+//        let storyboard = UIStoryboard(name: "Collection", bundle: Bundle.main)
+//        let controller = storyboard.instantiateViewController(withIdentifier: "ProfileNavi") as? UINavigationController
+//        
+//        window?.rootViewController = controller
         
         return true
     }
