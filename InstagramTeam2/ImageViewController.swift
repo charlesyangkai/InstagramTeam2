@@ -8,17 +8,18 @@
 
 import UIKit
 import Photos
+import FirebaseAuth
+import FirebaseDatabase
 
 class ImageViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     var imageArray = [UIImage]()
     
+    var displayNameInPost : String?
     
-    @IBOutlet weak var profileStackButtons: UIStackView! {
-        didSet {
-            
-        }
-    }
+    @IBOutlet weak var displayedUserNameLabel: UILabel!
+    
+    @IBOutlet weak var profileStackButtons: UIStackView!
     
     @IBOutlet weak var collectionViewImageButton: UIButton! {
         didSet {
@@ -55,13 +56,54 @@ class ImageViewController: UIViewController, UICollectionViewDelegate, UICollect
             editProfileButton.addTarget(self, action: #selector(toEditProfilePage), for: .touchUpInside)
         }
     }
+    @IBOutlet weak var discriptionTextView: UITextView!
     
     
 //////////////////////////////////////////////////////////
     
+    //to display the username in label at profile page
     
+    func displayUserName() {
+        let ref = FIRDatabase.database().reference()
+        
+        let uid = FIRAuth.auth()?.currentUser?.uid
+        
+        ref.child("username").child(uid!).observe(.value, with: {
+            (snapshot) in
+            
+            print(snapshot)
+            
+            let value = snapshot.value as? NSDictionary
+            let displayName = value?["name"] as? String ?? ""
+            
+            self.displayNameInPost = displayName
+            
+            self.displayedUserNameLabel.text = self.displayNameInPost
+            
+            self.navigationItem.title = self.displayNameInPost
+            
+        
+        })
+            
+            
+    }
     
-    
+    func displayUserBio() {
+        let ref = FIRDatabase.database().reference()
+        
+        let uid = FIRAuth.auth()?.currentUser?.uid
+        
+        ref.child("username").child(uid!).observe(.value, with: {
+            (snapshot) in
+            
+            print(snapshot)
+            
+            let value = snapshot.value as? NSDictionary
+            let displayBio = value?["bio"] as? String ?? ""
+            
+            self.discriptionTextView.text = displayBio
+        })
+    }
     
     
     
@@ -95,6 +137,9 @@ class ImageViewController: UIViewController, UICollectionViewDelegate, UICollect
         displayImageView.backgroundColor = UIColor.green
         displayImageView.layer.cornerRadius = displayImageView.frame.size.width / 2
         displayImageView.clipsToBounds = true
+        displayUserName()
+        displayUserBio()
+        
         
     }
     

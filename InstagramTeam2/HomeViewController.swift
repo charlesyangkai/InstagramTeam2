@@ -66,6 +66,8 @@ class HomeViewController: UIViewController {
         
         observePosts()
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log Out", style: .plain, target: self, action: #selector(handleLogout))
+        
         //child("users").updateChildValues([validUserID: userDictionary])
         //VS
         //dbRef.child("posts").childByAutoId().setValue(postDictionary)
@@ -98,6 +100,20 @@ class HomeViewController: UIViewController {
         HomeViewController.currentPosts.append(post)
         postTableView.reloadData()
     }
+    
+    func handleLogout() {
+        do {
+            try FIRAuth.auth()?.signOut()
+        }catch let logoutError {
+            print(logoutError)
+        }
+        
+        self.dismiss(animated: true, completion: nil)
+        
+    }
+
+    
+    
 }
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
