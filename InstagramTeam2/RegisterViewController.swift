@@ -103,7 +103,7 @@ class RegisterViewController: UIViewController {
             
             // Step 2. Definining the key/id
             guard let validUserID = user?.uid else {return}
-            //
+            
             
             // Step 3. Adding the child values [key: value]
             self.dbRef.child("username").updateChildValues([validUserID: userDictionary])

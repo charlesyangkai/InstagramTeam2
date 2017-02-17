@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -42,6 +43,63 @@
             </objects>
             <point key="canvasLocation" x="-601" y="-31"/>
         </scene>
+        <!--Comment View Controller-->
+        <scene sceneID="0T2-c4-uy2">
+            <objects>
+                <viewController storyboardIdentifier="CommentViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="veA-ic-CaI" customClass="CommentViewController" customModule="InstagramTeam2" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="apZ-Ol-r3h"/>
+                        <viewControllerLayoutGuide type="bottom" id="dsT-7v-t0X"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="RCH-13-JBC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Xmd-FO-jv2">
+                                <rect key="frame" x="0.0" y="20" width="375" height="567"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AU2-HN-ma7">
+                                <rect key="frame" x="28" y="599" width="267" height="56"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Azt-bc-vqM">
+                                <rect key="frame" x="307" y="599" width="56" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="RIS-XM-9dX"/>
+                                    <constraint firstAttribute="width" constant="56" id="w5J-gL-r8X"/>
+                                </constraints>
+                                <state key="normal" title="Send"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Xmd-FO-jv2" firstAttribute="leading" secondItem="RCH-13-JBC" secondAttribute="leading" id="04K-fS-5QB"/>
+                            <constraint firstItem="dsT-7v-t0X" firstAttribute="top" secondItem="Xmd-FO-jv2" secondAttribute="bottom" constant="80" id="GTf-uY-iao"/>
+                            <constraint firstItem="Xmd-FO-jv2" firstAttribute="top" secondItem="apZ-Ol-r3h" secondAttribute="bottom" id="Ho0-do-JuT"/>
+                            <constraint firstItem="Azt-bc-vqM" firstAttribute="top" secondItem="Xmd-FO-jv2" secondAttribute="bottom" constant="12" id="LTj-2L-CVg"/>
+                            <constraint firstItem="Azt-bc-vqM" firstAttribute="leading" secondItem="AU2-HN-ma7" secondAttribute="trailing" constant="12" id="Qg1-cc-bnZ"/>
+                            <constraint firstItem="AU2-HN-ma7" firstAttribute="leading" secondItem="RCH-13-JBC" secondAttribute="leadingMargin" constant="12" id="Qwe-CN-utJ"/>
+                            <constraint firstItem="dsT-7v-t0X" firstAttribute="top" secondItem="Azt-bc-vqM" secondAttribute="bottom" constant="12" id="XHk-qu-YlQ"/>
+                            <constraint firstItem="AU2-HN-ma7" firstAttribute="top" secondItem="Xmd-FO-jv2" secondAttribute="bottom" constant="12" id="arC-C9-7Ns"/>
+                            <constraint firstItem="dsT-7v-t0X" firstAttribute="top" secondItem="AU2-HN-ma7" secondAttribute="bottom" constant="12" id="bqb-vS-pC9"/>
+                            <constraint firstItem="Azt-bc-vqM" firstAttribute="bottom" secondItem="AU2-HN-ma7" secondAttribute="bottom" id="duv-Ll-r30"/>
+                            <constraint firstAttribute="trailing" secondItem="Xmd-FO-jv2" secondAttribute="trailing" id="eqm-6S-lTK"/>
+                            <constraint firstAttribute="trailing" secondItem="Azt-bc-vqM" secondAttribute="trailing" constant="12" id="jZp-3q-eLP"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="commentSendButton" destination="Azt-bc-vqM" id="xcH-ej-pdN"/>
+                        <outlet property="commentTableView" destination="Xmd-FO-jv2" id="Gt1-L5-eTw"/>
+                        <outlet property="commentTextField" destination="AU2-HN-ma7" id="1X3-tV-nA8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hn7-JX-03P" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-602.39999999999998" y="612.14392803598207"/>
+        </scene>
         <!--Camera Gallery View Controller-->
         <scene sceneID="Xlq-pH-eX6">
             <objects>
@@ -55,13 +113,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KEV-pI-0bm">
-                                <rect key="frame" x="0.0" y="64" width="375" height="375"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="375"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="375" id="Hz0-ya-KQT"/>
                                 </constraints>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="MvT-7c-iX1">
-                                <rect key="frame" x="8" y="447" width="359" height="93"/>
+                                <rect key="frame" x="8" y="403" width="359" height="93"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="93" id="jkU-kX-9k1"/>
@@ -70,7 +128,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F0X-fP-xxd">
-                                <rect key="frame" x="148" y="560" width="79" height="30"/>
+                                <rect key="frame" x="148" y="516" width="79" height="30"/>
                                 <state key="normal" title="POST IT LA"/>
                             </button>
                         </subviews>

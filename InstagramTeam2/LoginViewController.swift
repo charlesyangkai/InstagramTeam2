@@ -53,13 +53,13 @@ class LoginViewController: UIViewController {
                 return
             }
             
-            self.loadChannelPage()
+            self.loadHomePage()
         })
     }
     
     
     
-    func loadChannelPage(){
+    func loadHomePage(){
         let instaPage = CustomTabBarController()
         present(instaPage, animated: true, completion: nil)
     }

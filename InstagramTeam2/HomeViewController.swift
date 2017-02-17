@@ -36,7 +36,6 @@ class HomeViewController: UIViewController {
         didSet{
             // The usual delegate and data source for table view
             postTableView.dataSource = self
-            postTableView.delegate = self
             
             // Register custom post cell to home view controller
             postTableView.register(PostCell.cellNib, forCellReuseIdentifier: PostCell.cellIdentifier)
@@ -83,13 +82,19 @@ class HomeViewController: UIViewController {
             
             // Making sure all chats are of type class dictionary before proceeding
             guard let value = snapshot.value as? [String: Any] else {return}
-            
+
+            // Init of Post
             // Making each post of class post
             let newPost = Post(withDictionary: value)
+            
+            // Getting post ID
+            newPost.postID = snapshot.key
+            
             // Appending each chat
             self.appendPost(newPost)
         })
     }
+    
 
     
     func appendPost(_ post: Post){
@@ -100,13 +105,13 @@ class HomeViewController: UIViewController {
     }
 }
 
-extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
+extension HomeViewController: CommentDelegate, UITableViewDataSource {
     
     
 //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        return currentPosts.count
+//
 //    }
-    
+//    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return HomeViewController.currentPosts.count
     }
@@ -118,6 +123,9 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
                 return UITableViewCell()
         }
         
+        cell.delegate = self
+        cell.indexPath = indexPath
+        
         let post = HomeViewController.currentPosts[indexPath.row]
         
         
@@ -127,30 +135,53 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.postImage.image = UIImage(data: data)
             }
         }
-        if let profielPictureUrl = post.profilePicture{
-            if let data = try? Data(contentsOf: profielPictureUrl) {
+        if let profilePictureUrl = post.profilePicture{
+            if let data = try? Data(contentsOf: profilePictureUrl) {
                 cell.postProfilePicture.image = UIImage(data: data)
+            }else{
+                print("stupid nigga")
             }
+        } else{
+            print("nigga nigga")
         }
         
         
         // UIButton
         cell.postLikeButton.setImage(UIImage(named: "notification"), for: .normal)
-        cell.postCommentButton.setImage(UIImage(named: "notification"), for: .normal)
-        cell.postViewCommentButton.setTitle("View all comments", for: .normal)
+        cell.postCommentButton.setImage(UIImage(named: "profile"), for: .normal)
+        cell.postViewCommentButton.setTitle("View all \(post.comments.count) comments", for: .normal)
         
         
         // UILabel
         cell.postUsername.text = post.username
-        cell.postNoOfLikes.text = " no of likes)"
+        
+        cell.postCaption.text = post.caption ?? ""
+      
+        cell.postNoOfLikes.text = "0 no of likes"
         
         // Step 2 of timestamp
-        if let timeStamp = post.timeStamp {
+        //if let timeStamp = post.timeStamp {
             cell.postTimestamp.text = dateFormater.string(from: Date(timeIntervalSinceReferenceDate: post.timeStamp!))
-        } else {
-            cell.postTimestamp.text = "blabla"
-        }
+//        } else {
+//            cell.postTimestamp.text = "blabla"
+//        }
         return cell
         
     }
+    
+    
+    
+    
+    func didPressButton(button: UIButton, indexPath: IndexPath?) {
+        
+        guard let validIndexPath = indexPath else { return }
+        let post = HomeViewController.currentPosts[validIndexPath.row]
+        
+        let storyboard = UIStoryboard(name: "TimelineStoryboard", bundle: Bundle.main)
+        let commentViewController = storyboard.instantiateViewController(withIdentifier: "CommentViewController") as? CommentViewController
+        navigationController?.pushViewController(commentViewController!, animated: true)
+        
+        commentViewController?.currentPostID = post.postID
+    }
+    
 }

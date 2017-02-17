@@ -8,8 +8,15 @@
 
 import UIKit
 
-class PostCell: UITableViewCell {
+protocol CommentDelegate {
+    func didPressButton(button: UIButton, indexPath: IndexPath?)
+}
 
+class PostCell: UITableViewCell {
+    
+    var delegate: CommentDelegate!
+    var indexPath: IndexPath?
+    
     @IBOutlet weak var postProfilePicture: UIImageView!
 
     @IBOutlet weak var postUsername: UILabel!
@@ -24,7 +31,11 @@ class PostCell: UITableViewCell {
 
     @IBOutlet weak var postCaption: UILabel!
     
-    @IBOutlet weak var postViewCommentButton: UIButton!
+    @IBOutlet weak var postViewCommentButton: UIButton!{
+        didSet{
+            delegate.didPressButton(button: postViewCommentButton, indexPath: indexPath)
+        }
+    }
 
     @IBOutlet weak var postTimestamp: UILabel!
     
@@ -32,6 +43,7 @@ class PostCell: UITableViewCell {
     // Ultimate purpose to do this is to allow Post View Controller to use this custom cell programatically
     static let cellIdentifier = "PostCell"
     static let cellNib = UINib(nibName: "PostCell", bundle: Bundle.main)
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

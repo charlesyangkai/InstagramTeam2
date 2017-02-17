@@ -10,9 +10,26 @@ import Foundation
 
 class Comment {
     
-    var commenter: String?
+    var username: String?
+    var text: String?
+    var timeStamp: TimeInterval?
     var profilePicture: URL?
-    var comment: String?
+    var postID: String?
+    var commentID: String?
     
-    init(){}
+    init(withDictionary dictionary: [String: Any]){
+        
+        commentID = dictionary["commentID"] as? String
+        
+        postID = dictionary["postID"] as? String
+        
+        username = dictionary["username"] as? String
+        text = dictionary["text"] as? String
+        
+        if let profilePictureURL = dictionary["profilePicture"] as? String{
+            profilePicture = URL(string: profilePictureURL)
+        }
+        
+        timeStamp = dictionary["timeStamp"] as? TimeInterval
+    }
 }

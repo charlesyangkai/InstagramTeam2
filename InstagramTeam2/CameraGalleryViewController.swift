@@ -95,14 +95,11 @@ class CameraGalleryViewController: UIViewController, UIImagePickerControllerDele
         
         let caption = textView.text
         
-        let postNumber = HomeViewController.currentPosts.count
-        
         // Getting the current time
         let timestamp = Date.timeIntervalSinceReferenceDate
         
         // Creating a dictionary that stores the value for current post
         var postDictionary : [String: Any] = ["username" : displayThisName, "caption" : caption, "profilePicture": displayThisProfilePicture, "timeStamp" : timestamp]
-        
         
         // Step 2 of setting image url string
         // Converting url to string
@@ -111,14 +108,19 @@ class CameraGalleryViewController: UIViewController, UIImagePickerControllerDele
             postDictionary["image"] = urlString
         }
         
-        
         // Uploading current post class as dictionary to firebase
         dbRef.child("posts").childByAutoId().setValue(postDictionary)
         // dbRef.child("posts").child(String(chatIndex)).setValue(postDictionary)
+        
+        self.loadHomePage()
+        
     }
 
     
-    
+    func loadHomePage(){
+        let instaPage = HomeViewController()
+        present(instaPage, animated: true, completion: nil)
+    }
     
 
     func setupView(){
